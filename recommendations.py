@@ -1,20 +1,18 @@
 from datetime import datetime, timedelta
 import re
 
-time_pattern = re.compile(r"[01]?[0-9]\s?:\s?[0-5][0-9]")
+time_pattern = re.compile(r"[0-2]?[0-9]\s?:\s?[0-5][0-9]")
 sleep_hours_pattern = re.compile(r"[0-9]\s?(\.[0-9])?")
 
 
 def recommended_bed_wakeup_time_based_on_hours_of_sleep():
-    print("Enter Bed Time and hours of sleep required, separated by commas\n")
-    print("Example: 22:30,8\n")
-
-    user_input = input()
+    user_input = input(
+        "Enter Bed Time and hours of sleep required, separated by commas\nExample: 22:30,8\n"
+    )
     user_input = user_input.strip().split(",")
 
-    while (
-        not time_pattern.match(user_input[0])
-        or not sleep_hours_pattern.match(user_input[1])
+    while not time_pattern.match(user_input[0]) or not sleep_hours_pattern.match(
+        user_input[1]
     ):
         print("Invalid input. Try again\n")
         user_input = input()
@@ -37,10 +35,9 @@ def recommended_bed_wakeup_time_based_on_hours_of_sleep():
 
 
 def recommended_bed_wakeup_time_based_on_specific_wakeup_time():
-    print("Enter Bed Time and Wakeup Time, separated by commas\n")
-    print("Example: 22:30,6:30\n")
-
-    user_input = input()
+    user_input = input(
+        "Enter Bed Time and Wakeup Time, separated by commas\nExample: 22:30,6:30\n"
+    )
     user_input = user_input.split(",")
 
     while not time_pattern.match(user_input[0]) or not time_pattern.match(
